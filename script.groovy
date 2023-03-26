@@ -9,6 +9,7 @@ def testApp() {
 def deployApp() {
     echo 'deplying the application...'
     echo "deploying version ${params.VERSION}"
+    echo "Selected choice is : ${params.CHOICES}"
     def files = findFiles(glob: '**/*.*', excludes: 'b/*.txt,**/aba/*.txt')
     for (file in files) {
       echo """
