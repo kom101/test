@@ -37,7 +37,10 @@ pipeline {
             }
         }
         stage("deploy") {
-            steps {
+          parameters {
+        choice(name: 'CHOICES', choices: choiceArray, description: 'Please Select One')
+          }
+                    steps {
                 script {
                     gv.deployApp()
                 }
