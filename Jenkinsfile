@@ -1,10 +1,6 @@
 def gv
-def choiceArray = []
-
-
-                
-
-    
+      
+   
 pipeline {
     agent any
     parameters {
