@@ -13,7 +13,7 @@ job('job1') {
         echo 'Hello world!'
         }    
     }
-
+}
 
 
 buildPipelineView('Task6_view') {
