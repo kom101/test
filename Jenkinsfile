@@ -1,7 +1,6 @@
-pipeline {
 job('job1') {
     description('For pulling the github repo')
-    label('test')
+    label('docker')
     scm {
         git {
             remote {
@@ -15,3 +14,16 @@ job('job1') {
         }    
     }
 }
+
+
+buildPipelineView('Task6_view') {
+    filterBuildQueue(false)
+    filterExecutors(false)
+    displayedBuilds(1)
+    selectedJob('job1')
+    alwaysAllowManualTrigger(true)
+    showPipelineParameters()
+    refreshFrequency(3)
+}
+
+    queue('job1')
