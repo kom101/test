@@ -17,6 +17,8 @@ def deployApp() {
       ${file.length} ${file.lastModified}
       """
     }
+    
+    def choiceArray = []
     for (file in files) {
       choiceArray <<  ${file.name} 
     }
