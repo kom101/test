@@ -1,6 +1,8 @@
 def gv
 def choiceArray = []
 
+gv.deployApp()
+                
 for (file in gv.files) {
       choiceArray <<  ${file.name} 
     }
