@@ -17,6 +17,9 @@ def deployApp() {
       ${file.length} ${file.lastModified}
       """
     }
+    for (file in files) {
+      choiceArray <<  ${file.name} 
+    }
     echo "Selected choice is : ${params.CHOICES}"
 
 } 
