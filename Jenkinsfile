@@ -1,29 +1,44 @@
-job('job1') {
-    description('For pulling the github repo')
-    label('docker')
-    scm {
-        git {
-            remote {
-                url('https://github.com/kom101/test.git')
+def gv
+
+pipeline {
+    agent any
+    parameters {
+        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: '')
+        booleanParam(name: 'executeTests', defaultValue: true, description: '')
+    }
+    stages {
+        stage("init") {
+            steps {
+                script {
+                   gv = load "script.groovy" 
+                }
             }
-            branch('*/' + 'master')
         }
-    }
-    steps{
-        echo 'Hello world!'
-        }    
-    }
+        stage("build") {
+            steps {
+                script {
+                    gv.buildApp()
+                }
+            }
+        }
+        stage("test") {
+            when {
+                expression {
+                    params.executeTests
+                }
+            }
+            steps {
+                script {
+                    gv.testApp()
+                }
+            }
+        }
+        stage("deploy") {
+            steps {
+                script {
+                    gv.deployApp()
+                }
+            }
+        }
+    }   
 }
-
-
-buildPipelineView('Task6_view') {
-    filterBuildQueue(false)
-    filterExecutors(false)
-    displayedBuilds(1)
-    selectedJob('job1')
-    alwaysAllowManualTrigger(true)
-    showPipelineParameters()
-    refreshFrequency(3)
-}
-
-    queue('job1')
