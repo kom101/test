@@ -12,8 +12,8 @@ def deployApp() {
     def files = findFiles(glob: '**/*.*', excludes: 'b/*.txt,**/aba/*.txt')
     for (file in files) {
       echo """
-      ${files[0].name} ${files[0].path} ${files[0].directory} 
-      ${files[0].length} ${files[0].lastModified}
+      ${file.name} ${file.path} ${file.directory} 
+      ${file.length} ${file.lastModified}
       """
     }
 
