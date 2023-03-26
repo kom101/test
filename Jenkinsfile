@@ -1,3 +1,4 @@
+{
 job('job1') {
     description('For pulling the github repo')
     label('test')
