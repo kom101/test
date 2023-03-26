@@ -3,9 +3,7 @@ def choiceArray = []
 
 gv.deployApp()
                 
-for (file in gv.files) {
-      choiceArray <<  ${file.name} 
-    }
+
     
 pipeline {
     agent any
