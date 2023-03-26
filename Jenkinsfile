@@ -1,7 +1,7 @@
 def gv
 def choiceArray = []
 
-gv.deployApp()
+
                 
 
     
@@ -17,6 +17,7 @@ pipeline {
             steps {
                 script {
                    gv = load "script.groovy" 
+                  gv.deployApp()
                 }
             }
         }
