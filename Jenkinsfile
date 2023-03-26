@@ -37,7 +37,7 @@ pipeline {
         }
         stage("deploy") {
           parameters {
-        choice(name: 'CHOICES', choices: choiceArray, description: 'Please Select One')
+              choice(name: 'CHOICES', choices: ['1.1.0', '1.2.0', '1.3.0'], description: 'Please Select One')
           }
                     steps {
                 script {
